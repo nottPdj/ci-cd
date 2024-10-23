@@ -3,12 +3,24 @@ on:
   pull_request:
   push:
     branches:
-      -main
+      - main
 
 jobs:
   lint: 
     name: Workshop Lint 
     runs-on: ubuntu-latest
     steps:
-      - run: npm run lint
+      - name: Check out Git repository
+        uses: actions/checkout@v4
       
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+
+      - name: Setup npm
+        run: npm run setup
+
+      - name: Run linters
+        run: npm run lint
+
+      - name: Check if its formatted
+        run: npm run format:check 
