@@ -1,0 +1,14 @@
+name: "Lint workshop files"
+on:
+  pull_request:
+  push:
+    branches:
+      -main
+
+jobs:
+  lint: 
+    name: Workshop Lint 
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm run lint
+      
